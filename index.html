@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Bootraps -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    />
+    <!-- Font Family -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main container">
+      <header>
+        <div>
+          <ul class="nav bg-primary">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="#"
+                >Active</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled text-muted">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <h1 class="my-4">Bài Tập Axios</h1>
+      <h5 class="my-4 text-primary">Quản Lý Nhân Viên</h5>
+    </div>
+    <!-- Add Staff -->
+    <form action="#" id="form" class="container">
+      <div class="form-group mb-4">
+        <label for="MaNV" class="form-label">Mã Nhân Viên</label>
+        <input type="text" id="MaNV" class="form-control" placeholder="Nhập vào mã nhân viên">
+        <span id="notifyMaNV" class="text-danger "></span>
+      </div>
+      <div class="form-group mb-4">
+        <label for="Name" class="form-label">Tên Nhân Viên</label>
+        <input type="text" id="Name" class="form-control" placeholder="Nhập vào tên nhân viên">
+        <span id="notifyName" class="text-danger "></span>
+      </div>
+      <div class="form-group mb-4">
+        <label for="office" class="form-label">Chức Vụ</label>
+        <select name="" id="office">
+          <option value="0">Select</option>
+          <option value="1">Nhân Viên</option>
+          <option value="2">Quản Lý</option>
+          <option value="3">Giám Đốc</option>
+        </select>
+        <span id="notifyOffice" class="text-danger "></span>
+      </div>
+      <div class="form-group mb-4">
+        <label for="Salary" class="form-label">Lương Cơ Bản</label>
+        <input type="text" id="Salary" class="form-control" placeholder="Nhập vào lương cơ bản">
+        <span id="notifySalary" class="text-danger "></span>
+      </div>
+      <div class="form-group mb-4">
+        <label for="TimeWork" class="form-label">Số Giờ Làm Trong Tháng</label>
+        <input type="text" id="TimeWork" class="form-control" placeholder="Nhập vào số giờ làm">
+        <span id="notifyTimework" class="text-danger "></span>
+      </div>
+    </form>
+    <div class="container">
+      <button class="btn btn-warning text-center  text-dark" onclick="addlistStaff()">
+        Thêm Nhân Viên
+      </button>
+    </div>
+    <!-- Modal Edit -->
+    <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-danger" id="exampleModalLabel">Chỉnh Sửa Nhân Viên</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form action="#" id="form">
+          <div class="form-group mb-4">
+            <label for="" class="form-label">Mã Nhân Viên</label>
+            <input type="text" id="MaNV1" class="form-control" placeholder="Nhập vào mã nhân viên">
+            <span id="notifyMaNv1" class="text-danger "></span>
+          </div>
+          <div class="form-group mb-4">
+            <label for="" class="form-label">Tên Nhân Viên</label>
+            <input type="text" id="Name1" class="form-control" placeholder="Nhập vào tên nhân viên">
+            <span id="notifyName1" class="text-danger "></span>
+          </div>
+          <div class="form-group mb-4">
+            <label for="" class="form-label">Chức Vụ</label>
+            <select name="" id="office1">
+              <option value="0">Select</option>
+              <option value="1">Nhân Viên</option>
+              <option value="2">Quản Lý</option>
+              <option value="3">Giám Đốc</option>
+            </select>
+            <span id="notifyoffice1" class="text-danger "></span>
+          </div>
+          <div class="form-group mb-4">
+            <label for="" class="form-label">Lương Cơ Bản</label>
+            <input type="text" id="Salary1" class="form-control" placeholder="Nhập vào lương cơ bản">
+            <span id="notifySalary1" class="text-danger "></span>
+          </div>
+          <div class="form-group mb-4">
+            <label for="" class="form-label">Số Giờ Làm Trong Tháng</label>
+            <input type="text" id="TimeWork1" class="form-control" placeholder="Nhập vào số giờ làm">
+            <span id="notifyTimeWork1" class="text-danger "></span>
+          </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Table -->
+    <div class="container">
+      <div class="py-1 my-4 bg-light">
+        <h4 class="mb-0 text-center text-danger">Danh sách nhân viên</h4>
+      </div>
+      <table class="table table-bordered">
+        <thead class="text-center">
+          <tr>
+            <th>Mã nhân viên</th>
+            <th>Tên nhân viên</th>
+            <th>Chức vụ</th>
+            <th>Lương cơ bản</th>
+            <th>Tổng lương</th>
+            <th>Giờ làm/tháng</th>
+            <th>Xếp loại nhân viên</th>
+            <th colspan="2" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody id="tblList"></tbody>
+      </table>
+    </div>
+  </body>
+  <!-- Bootraps JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Axios -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js"></script>
+
+
+  
+  <script src="./assets/js/services/callAPI.js"></script>
+  <script src="./assets/js/models/staff.js"></script>
+  <script src="./assets/js/models/validation.js"></script>
+  <script src="./assets/js/controller/main.js"></script>
+</html>
